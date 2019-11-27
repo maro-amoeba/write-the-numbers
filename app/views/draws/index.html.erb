@@ -1,0 +1,14 @@
+<%= javascript_include_tag 'drawing' %>
+
+<html>
+    <head></head>
+    <body onload="InitThis();">
+        <form id="form1" runat="server">
+            <div align="center">
+                <canvas id="myCanvas" width="224" height="224" style="border:2px solid black"></canvas>
+                <br /><br />
+                <table><tr><td><button onclick="clearArea();return false;">Clear Area</button></td><td><button onclick="UploadPic();return false;">Upload Picture to Server</button></td></tr></table>
+            </div>
+        </form>
+    </body>
+</html>
