@@ -11,15 +11,17 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  encoding: utf8
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  username: <%= ENV.fetch('APP_DATABASE_USER') %>
+  password: <%= ENV.fetch('APP_DATABASE_PASSWORD') %>
+  host: <%= ENV.fetch('APP_DATABASE_HOST') %>
+  # socket: /tmp/mysql.sock
+
 
 development:
   <<: *default
-  database: write_the_numbers_development
+  database: <%= ENV.fetch('APP_DATABASE') %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -51,4 +53,4 @@ production:
   <<: *default
   database: write_the_numbers_production
   username: write_the_numbers
-  password: <%= ENV['WRITE_THE_NUMBERS_DATABASE_PASSWORD'] %>
+  password: <%= ENV.fetch('APP_DATABASE_PASSWORD') %>
